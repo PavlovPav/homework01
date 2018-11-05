@@ -18,3 +18,24 @@ def encrypt_vigenere(plaintext, keyword):
             encrypted[i] = encrypted[i].lower()
     return ''.join(encrypted)
 
+
+def decrypt_vigenere(ciphertext, keyword):
+    """
+    >>> decrypt_vigenere("PYTHON", "A")
+    'PYTHON'
+    >>> decrypt_vigenere("python", "a")
+    'python'
+    >>> decrypt_vigenere("LXFOPVEFRNHR", "LEMON")
+    'ATTACKATDAWN'
+    """
+    decrypted = list()
+    for i in range(0, len(ciphertext)):
+        if ciphertext[i].lower() < 'a' or ciphertext[i].lower() > 'z':
+            decrypted.append(ciphertext[i])
+            continue
+        key = ord(keyword[i % len(keyword)].upper())
+        decrypted.append(chr(ord('A') + (ord(ciphertext[i].upper()) - key) % 26))
+        if ciphertext[i].islower():
+            decrypted[i] = decrypted[i].lower()
+    return ''.join(decrypted)
+
