@@ -27,6 +27,16 @@ def encrypt_caesar(plaintext):
 
 
 def decrypt_caesar(ciphertext):
+    """
+        >>> decrypt_caesar("SBWKRQ")
+        'PYTHON'
+        >>> decrypt_caesar("sbwkrq")
+        'python'
+        >>> decrypt_caesar("Sbwkrq3.6")
+        'Python3.6'
+        >>> decrypt_caesar("")
+        ''
+        """
     res = ''
     for c in ciphertext:
         if ord('A') <= ord(c) <= ord('Z'):
